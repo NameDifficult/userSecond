@@ -1,0 +1,86 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Simple API
+  description: A simple API to learn how to write OpenAPI Specification
+schemes:
+  - https
+
+host: localhost
+basePath: /user
+paths:
+#############################################  START  #######################################################
+  /byName/{username}:
+    get:
+      summary: SELECT
+      description: 根据用户名查询用户
+      parameters:
+        - name: username
+          type: string
+          in: path
+          required: true
+          description: 用户名
+      responses:
+        200:
+          description: 查询成功
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/items'
+        400:
+          description: 查询失败
+#############################################  END  #######################################################
+
+
+#############################################  START  #######################################################
+  /allUser:
+    get:
+      summary: SELECT
+      description: 查询所有的user用户并返回
+      responses:
+        200:
+          description: 查询成功
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/items'
+        400:
+          description: 查询失败
+#############################################  END  #######################################################
+
+
+#############################################  START  #######################################################
+  /addUser:
+    post:
+      summary: INSERT
+      description: 添加用户
+      parameters:
+        - name: username
+          in: body
+      responses:
+        200:
+          description: 查询成功
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/items'
+
+
+
+
+
+
+
+
+
+definitions:
+  items:
+    required:
+      - username
+    properties:
+      firstName:
+        type: string
+      lastName:
+        type: string
+      username:
+        type: string

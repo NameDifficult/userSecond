@@ -1,0 +1,30 @@
+server:
+  port: 9089
+
+
+#服务名称
+spring:
+  application:
+    name: cloud-producer-service
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource            # 当前数据源操作类型
+    driver-class-name: com.mysql.cj.jdbc.Driver            # mysql驱动包 com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/firstweek?serverTimezone=Asia/Shanghai&useSSL=false
+    username: root
+    password: 123456
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+# 配置mybatis
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true  #开启驼峰命名
